@@ -58,8 +58,8 @@ jobs:
     - name: Clone CountVote
       uses: actions/checkout@v2
       with:
-        repository: neoburger/TEE
-        ref: main
+        repository: Hecate2/TEE  # Change this for production!
+        ref: CountVote
         path: .TEE
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
