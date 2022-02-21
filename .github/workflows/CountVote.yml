@@ -96,6 +96,7 @@ jobs:
         COUNT_VOTE_SINCE_BLOCK: ${{ github.event.inputs.COUNT_VOTE_SINCE_BLOCK }}
         COUNT_VOTE_UNTIL_TIME: ${{ github.event.inputs.COUNT_VOTE_UNTIL_TIME }}
         COUNT_VOTE_EVERY_BLOCKS: ${{ github.event.inputs.COUNT_VOTE_EVERY_BLOCKS }}
+        REPOSITORY_LOCAL_PATH: "."
       run: |
         cd .node/neo-cli/bin/Release/net6.0
         mkfifo .tmp
