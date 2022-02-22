@@ -32,8 +32,10 @@ jobs:
     - name: Clone NBIP Branch
       uses: actions/checkout@v2
       with: 
+        token: $${{secrets.PUSH_TOKEN}}
         repository: Hecate2/NBIP
         ref: ${{ env.NBIP_BRANCH }}
+        fetch-depth: 0
     - name: Set Custom Branch
       if: github.event.inputs.DATA_BRANCH != ''
       run: echo "BRANCH=${{ github.event.inputs.DATA_BRANCH }}" >> $GITHUB_ENV
