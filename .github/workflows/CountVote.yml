@@ -32,7 +32,6 @@ jobs:
     - name: Clone NBIP Branch
       uses: actions/checkout@v2
       with: 
-        token: $${{secrets.PUSH_TOKEN}}
         repository: Hecate2/NBIP
         ref: ${{ env.NBIP_BRANCH }}
         fetch-depth: 0
@@ -114,5 +113,6 @@ jobs:
         git config --global user.name "neoburgerCountVote"
         git add .
         git commit -m CountVote
-        git push https://x-access-token:$${{secrets.PUSH_TOKEN}}@github.com/Hecate2/NBIP.git NBIP-${{ github.event.inputs.NBIP_ID }}
+        git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
+        git push --prune https://token:$${{secrets.PUSH_TOKEN}}@github.com/Hecate2/NBIP.git NBIP-${{ github.event.inputs.NBIP_ID }}
     
