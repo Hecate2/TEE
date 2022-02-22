@@ -32,7 +32,7 @@ jobs:
     - name: Clone NBIP Branch
       uses: actions/checkout@v2
       with: 
-        repository: Hecate2/NBIP
+        repository: ${{github.actor}}/NBIP
         ref: ${{ env.NBIP_BRANCH }}
         fetch-depth: 0
     - name: list files
@@ -114,5 +114,5 @@ jobs:
         git add .
         git commit -m CountVote
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-        git push --prune https://Hecate2:${{secrets.PUSH_TOKEN}}@github.com/Hecate2/NBIP.git NBIP-${{ github.event.inputs.NBIP_ID }}
+        git push --prune https://${{github.actor}}:${{secrets.PUSH_TOKEN}}@github.com/${{github.actor}}/NBIP.git NBIP-${{ github.event.inputs.NBIP_ID }}
     
