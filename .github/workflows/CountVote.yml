@@ -32,7 +32,7 @@ jobs:
     - name: Clone NBIP Branch
       uses: actions/checkout@v2
       with: 
-        repository: vang1ong7ang/NBIP
+        repository: Hecate2/NBIP
         ref: ${{ env.NBIP_BRANCH }}
     - name: Set Custom Branch
       if: github.event.inputs.DATA_BRANCH != ''
@@ -58,8 +58,6 @@ jobs:
     - name: Clone CountVote
       uses: actions/checkout@v2
       with:
-        repository: Hecate2/TEE  # Change this for production!
-        ref: CountVote
         path: .TEE
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -110,5 +108,5 @@ jobs:
         git config --global user.name "neoburgerCountVote"
         git add .
         git commit -m CountVote
-        git push
+        git push https://Hecate2:$${{secrets.PUSH_TOKEN}}@github.com/Hecate2/NBIP.git NBIP-${{ github.event.inputs.NBIP_ID }}
     
